@@ -3,9 +3,11 @@ import { RouterModule } from '@angular/router';
 import { CalorieRecordsGridComponent } from './components/calorie-records-grid/calorie-records-grid.component';
 import { WeightRecordsGridComponent } from './components/weight-records-grid/weight-records-grid.component';
 import { DiaryComponent } from './components/diary/diary.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
+    SharedModule,
     RouterModule.forChild([    
       // Component routes
       { path: 'calorie-records', component: CalorieRecordsGridComponent },

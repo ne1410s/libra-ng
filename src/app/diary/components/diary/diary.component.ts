@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DiaryService } from '../../diary.service';
+import { CalorieRecord } from '../../models/calorie-record';
 
 @Component({
   selector: 'app-diary',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiaryComponent implements OnInit {
 
-  constructor() { }
+  calorieRecords$!: Observable<CalorieRecord[]>;
+
+  constructor(private diaryService: DiaryService) { }
 
   ngOnInit(): void {
+    this.calorieRecords$ = this.diaryService.getCalorieRecords();
   }
 
 }
