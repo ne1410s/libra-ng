@@ -1,24 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { DiaryState } from './diary.reducer';
 
 const getDiaryFeatureState = createFeatureSelector<DiaryState>('diary');
 
-export const getShowProductCode = createSelector(
+export const getWeightRecords = createSelector(
   getDiaryFeatureState,
-  state => state.showProductCode,
+  state => state.weightRecords,
 );
 
-export const getCurrentProduct = createSelector(
+export const getCalorieRecords = createSelector(
   getDiaryFeatureState,
-  state => state.currentProduct,
-);
-
-export const getProducts = createSelector(
-  getDiaryFeatureState,
-  state => state.products,
-);
-
-export const getError = createSelector(
-  getDiaryFeatureState,
-  state => state.error,
+  state => state.calorieRecords,
 );

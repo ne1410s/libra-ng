@@ -1,4 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
+import { CalorieRecord } from '../models/calorie-record';
+import { WeightRecord } from '../models/weight-record';
 import * as GlobalState from '../../state/app.state';
 import * as DiaryActions from './diary.actions';
 
@@ -8,24 +10,45 @@ export interface State extends GlobalState.State {
 }
 
 export interface DiaryState {
-  showProductCode: boolean;
-  currentProduct: Product;
-  products: Product[];
+  calorieRecords: CalorieRecord[];
+  weightRecords: WeightRecord[];
   error: string;
 }
 
-const initialState: ProductState = {
-  showProductCode: true,
-  currentProduct: null,
-  products: [],
+const initialState: DiaryState = {
+  calorieRecords: [],
+  weightRecords: [],
   error: '',
 }
 
-export const productReducer = createReducer<ProductState>(
+export const diaryReducer = createReducer<DiaryState>(
   initialState,
-  on(ProductActions.toggleProductCode, (state): ProductState => {
+  on(DiaryActions.loadCalorieRecordsSuccess, (state, action): DiaryState => {
     return {
       ...state,
-      showProductCode: !state.showProductCode,
+      calorieRecords: action.records,
+      error: '',
     };
   }),
+  on(DiaryActions.loadCalorieRecordsFailure, (state, action): DiaryState => {
+    return {
+      ...state,
+      calorieRecords: [],
+      error: action.error,
+    };
+  }),
+  on(DiaryActions.loadWeightRecordsSuccess, (state, action): DiaryState => {
+    return {
+      ...state,
+      weightRecords: action.records,
+      error: '',
+    };
+  }),
+  on(DiaryActions.loadWeightRecordsFailure, (state, action): DiaryState => {
+    return {
+      ...state,
+      weightRecords: [],
+      error: action.error,
+    };
+  }),
+);

@@ -17,6 +17,16 @@ export class LibraInMemoryDb implements InMemoryDbService {
         recorded: new Date('2022-01-16 08:20:00'),
         amount: 99.7,
       },
+      {
+        id: 3,
+        recorded: new Date('2022-01-18 07:45:00'),
+        amount: 98.7,
+      },
+      {
+        id: 4,
+        recorded: new Date('2022-01-19 07:05:00'),
+        amount: 99.2,
+      },
     ];
     const diary_cals: CalorieRecord[] = [
       {

@@ -12,6 +12,7 @@ import { WelcomeComponent } from './home/welcome.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { LibraInMemoryDb } from 'src/test-data/libra-in-memory-db';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { environment } from '../environments/environment';
       maxAge: 25,
       logOnly: environment.production }),
     EffectsModule.forRoot([]),
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent],
 })
