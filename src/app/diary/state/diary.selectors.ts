@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { DiaryState } from './diary.reducer';
+import { DiaryState, diaryStateStoreName } from './diary.state';
 
-const getDiaryFeatureState = createFeatureSelector<DiaryState>('diary');
+const getDiaryFeatureState = createFeatureSelector<DiaryState>(diaryStateStoreName);
 
 export const getWeightRecords = createSelector(
   getDiaryFeatureState,

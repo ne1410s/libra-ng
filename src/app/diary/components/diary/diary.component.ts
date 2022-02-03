@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { CalorieRecord } from '../../models/calorie-record';
-import { State } from '../../state/diary.reducer';
+import { State } from '../../state/diary.state';
 import * as DiarySelectors from '../../state/diary.selectors';
 import * as DiaryActions from '../../state/diary.actions';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+//import { MatPaginatorModule } from '@angular/material/paginator';
+//import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-diary',

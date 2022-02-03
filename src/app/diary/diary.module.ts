@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { CalorieRecordsGridComponent } from './components/calorie-records-grid/calorie-records-grid.component';
 import { WeightRecordsGridComponent } from './components/weight-records-grid/weight-records-grid.component';
 import { DiaryComponent } from './components/diary/diary.component';
 import { SharedModule } from '../shared/shared.module';
 import { diaryReducer } from './state/diary.reducer';
-import { EffectsModule } from '@ngrx/effects';
 import { DiaryEffects } from './state/diary.effects';
+import { diaryStateStoreName } from './state/diary.state';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { DiaryEffects } from './state/diary.effects';
       // Fallback route
       { path: '**', redirectTo: '', pathMatch: 'full' },      
     ]),
-    StoreModule.forFeature('diary', diaryReducer),
+    StoreModule.forFeature(diaryStateStoreName, diaryReducer),
     EffectsModule.forFeature([DiaryEffects]),
     MatPaginatorModule,
     MatSortModule,
