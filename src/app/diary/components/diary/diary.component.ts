@@ -6,8 +6,6 @@ import { CalorieRecord } from '../../models/calorie-record';
 import { State } from '../../state/diary.state';
 import * as DiarySelectors from '../../state/diary.selectors';
 import * as DiaryActions from '../../state/diary.actions';
-//import { MatPaginatorModule } from '@angular/material/paginator';
-//import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-diary',
@@ -17,8 +15,7 @@ import * as DiaryActions from '../../state/diary.actions';
 export class DiaryComponent implements OnInit {
 
   calorieRecords$!: Observable<CalorieRecord[]>;
-  calorieRecordColumns = ['recorded', 'summary', 'intensity', 'amount', 'calories'];
-
+  
   constructor(private store: Store<State>) { }
   
   ngOnInit(): void {

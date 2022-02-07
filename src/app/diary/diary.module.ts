@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -27,9 +24,6 @@ import { diaryStateStoreName } from './state/diary.state';
     ]),
     StoreModule.forFeature(diaryStateStoreName, diaryReducer),
     EffectsModule.forFeature([DiaryEffects]),
-    MatPaginatorModule,
-    MatSortModule,
-    MatTableModule,
   ],
   declarations: [
     CalorieRecordsGridComponent,
