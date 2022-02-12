@@ -1,0 +1,23 @@
+<div class="table">
+  <div class="header">
+    <div>
+      <p>Recorded On</p>
+    </div>
+    <div>
+      <p>Amount</p>
+    </div>
+  </div>
+  <div *ngFor="let record of records">
+    <div>
+      <p>{{ record.recorded | date:'dd MMM yyyy HH:mm' }}</p>
+    </div>
+    <div>
+      <p>{{ record.amount }}</p>
+    </div>
+  </div>
+  <div class="footer">
+    <div>
+      <span>Footer!</span>
+    </div>
+  </div>
+</div>

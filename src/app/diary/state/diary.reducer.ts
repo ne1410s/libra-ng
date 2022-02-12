@@ -1,38 +1,47 @@
 import { createReducer, on } from '@ngrx/store';
+import { CalorieRecord } from '../models/calorie-record';
+import { WeightRecord } from '../models/weight-record';
 
-import { DiaryState } from './diary.state';
-import * as DiaryActions from './diary.actions';
+import { DiaryApiActions } from './actions';
+
+export const diaryStateStoreName = 'diary';
+
+export interface DiaryState {
+  calorieRecords: CalorieRecord[];
+  weightRecords: WeightRecord[];
+  error: string;
+}
 
 const initialState: DiaryState = {
   calorieRecords: [],
   weightRecords: [],
   error: '',
-}
+};
 
 export const diaryReducer = createReducer<DiaryState>(
   initialState,
-  on(DiaryActions.loadCalorieRecordsSuccess, (state, action): DiaryState => {
+  on(DiaryApiActions.loadCalorieRecordsSuccess, (state, action): DiaryState => {
     return {
       ...state,
       calorieRecords: action.records,
       error: '',
     };
   }),
-  on(DiaryActions.loadCalorieRecordsFailure, (state, action): DiaryState => {
+  on(DiaryApiActions.loadCalorieRecordsFailure, (state, action): DiaryState => {
     return {
       ...state,
       calorieRecords: [],
       error: action.error,
     };
   }),
-  on(DiaryActions.loadWeightRecordsSuccess, (state, action): DiaryState => {
+  on(DiaryApiActions.loadWeightRecordsSuccess, (state, action): DiaryState => {
     return {
       ...state,
       weightRecords: action.records,
       error: '',
     };
   }),
-  on(DiaryActions.loadWeightRecordsFailure, (state, action): DiaryState => {
+  on(DiaryApiActions.loadWeightRecordsFailure, (state, action): DiaryState => {
     return {
       ...state,
       weightRecords: [],

@@ -3,13 +3,12 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { CalorieRecordsGridComponent } from './components/calorie-records-grid/calorie-records-grid.component';
-import { WeightRecordsGridComponent } from './components/weight-records-grid/weight-records-grid.component';
-import { DiaryComponent } from './components/diary/diary.component';
+import { CalorieRecordsGridComponent } from './components/ui-only/calorie-records-grid/calorie-records-grid.component';
+import { WeightRecordsGridComponent } from './components/ui-only/weight-records-grid/weight-records-grid.component';
+import { DiaryComponent } from './components/diary-shell/smart-diary.component';
 import { SharedModule } from '../shared/shared.module';
-import { diaryReducer } from './state/diary.reducer';
 import { DiaryEffects } from './state/diary.effects';
-import { diaryStateStoreName } from './state/diary.state';
+import { diaryReducer, diaryStateStoreName } from './state/diary.reducer';
 
 @NgModule({
   imports: [

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { DiaryService } from '../diary.service';
-import * as DiaryActions from '../state/diary.actions';
+import { DiaryApiActions, DiaryPageActions } from './actions';
 
 @Injectable()
 export class DiaryEffects {
@@ -15,21 +15,21 @@ export class DiaryEffects {
 
   loadCalorieRecords$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(DiaryActions.loadCalorieRecords),
+      ofType(DiaryPageActions.loadCalorieRecords),
       mergeMap(() => this.diaryService.getCalorieRecords().pipe(
-        map(records => DiaryActions.loadCalorieRecordsSuccess({ records })),
-        catchError(error => of(DiaryActions.loadCalorieRecordsFailure({ error })))
+        map(records => DiaryApiActions.loadCalorieRecordsSuccess({ records })),
+        catchError(error => of(DiaryApiActions.loadCalorieRecordsFailure({ error })))
       ))
-    )
+    );
   });
 
   loadWeightRecords$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(DiaryActions.loadWeightRecords),
+      ofType(DiaryPageActions.loadWeightRecords),
       mergeMap(() => this.diaryService.getWeightRecords().pipe(
-        map(records => DiaryActions.loadWeightRecordsSuccess({ records })),
-        catchError(error => of(DiaryActions.loadWeightRecordsFailure({ error })))
+        map(records => DiaryApiActions.loadWeightRecordsSuccess({ records })),
+        catchError(error => of(DiaryApiActions.loadWeightRecordsFailure({ error })))
       ))
-    )
+    );
   });
 }
