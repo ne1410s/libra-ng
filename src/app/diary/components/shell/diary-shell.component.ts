@@ -8,7 +8,7 @@ import { WeightRecord } from '../../models/weight-record';
 import * as DiaryActions from '../../state/actions/diary.page.actions';
 
 @Component({
-  templateUrl: './smart-diary.component.html',
+  templateUrl: './diary-shell.component.html',
 })
 export class DiaryComponent implements OnInit {
 

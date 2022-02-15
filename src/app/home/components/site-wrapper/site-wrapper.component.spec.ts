@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DiaryComponent } from './smart-diary.component';
+import { SiteWrapperComponent } from './site-wrapper.component';
 
-describe('DiaryComponent', () => {
-  let component: DiaryComponent;
-  let fixture: ComponentFixture<DiaryComponent>;
+describe('SiteWrapperComponent', () => {
+  let component: SiteWrapperComponent;
+  let fixture: ComponentFixture<SiteWrapperComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiaryComponent ]
+      declarations: [ SiteWrapperComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DiaryComponent);
+    fixture = TestBed.createComponent(SiteWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

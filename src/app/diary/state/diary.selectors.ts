@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { DiaryState, diaryStateStoreName } from './diary.state';
+import { DiaryState, diaryStateStoreName } from './diary.reducer';
 
 const getDiaryFeatureState = createFeatureSelector<DiaryState>(diaryStateStoreName);
 

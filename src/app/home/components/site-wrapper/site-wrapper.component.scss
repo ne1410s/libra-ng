@@ -1,0 +1,32 @@
+div.page {
+  min-height: 100%;
+}
+
+h1 {
+  margin: .55em 0;
+  color: green;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 0 1em 0 rgba(0,0,0,.4);
+
+  section {
+    flex: 0 1 60%;
+  }
+}
+
+footer {
+  position: sticky;
+  top: calc(100vh - 20px);
+  background-color: #fff;
+  box-shadow: 0 0 1em 0 rgba(0,0,0,.4);
+  padding: .5em;
+  text-align: center;
+}
