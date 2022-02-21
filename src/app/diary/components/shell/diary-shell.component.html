@@ -3,3 +3,5 @@
 <app-calorie-records-grid [records]="calorieRecords$ | async | fallback:[]"></app-calorie-records-grid>
 
 <app-weight-records-grid [records]="weightRecords$ | async | fallback:[]"></app-weight-records-grid>
+
+<app-weight-records-chart [records]="weightRecords$ | async | fallback:[]"></app-weight-records-chart>
