@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { ChartData, ChartOptions } from 'chart.js';
 import { WeightRecord } from 'src/app/diary/models/weight-record';
 
 @Component({
@@ -11,7 +12,7 @@ export class WeightRecordsChartComponent implements OnChanges {
   @Input()
   records!: WeightRecord[];
 
-  basicData = {
+  data: ChartData<'scatter'> = {
     datasets: [
       {
         label: 'Weight Records',
@@ -19,17 +20,50 @@ export class WeightRecordsChartComponent implements OnChanges {
         fill: true,
         showLine: true,
         borderColor: 'red',
+        borderWidth: 2,
         backgroundColor: 'rgba(147, 102, 102, 0.25)',
-        tension: .2
+        tension: .2,
       },
     ]
   };
 
+  options: ChartOptions<'scatter'> = {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Ra!'
+      },
+      legend: {
+        display: false
+      },
+    },
+    scales: {
+      x: {
+        type: 'time' as any,
+        min: new Date(2022, 0, 1) as any,
+        max: new Date(2022, 11, 31) as any,
+        time: {
+          unit: 'month',
+          displayFormats: {
+            month: 'MMM yy'
+          }
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'weight / kg',
+        },
+        min: 70,
+      }
+    }
+  };
+
   ngOnChanges(): void {
-    this.basicData = {
+    this.data = {
       datasets: [{
-        ... this.basicData.datasets[0],
-        data: this.records.map(r => ({ x: r.recorded, y: r.amount })),
+        ... this.data.datasets[0],
+        data: this.records.map(r => ({ x: r.recorded, y: r.amount } as any)),
       }]
     };
   }

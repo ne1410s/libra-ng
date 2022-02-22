@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ChartModule } from 'primeng/chart';
+import 'chartjs-adapter-date-fns';
 
 import { CalorieRecordsGridComponent } from './components/ui/calorie-records-grid/calorie-records-grid.component';
 import { WeightRecordsGridComponent } from './components/ui/weight-records-grid/weight-records-grid.component';
