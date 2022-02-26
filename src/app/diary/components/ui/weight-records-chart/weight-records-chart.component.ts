@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
+import { RecordsWindow } from 'src/app/diary/models/records-window';
 import { WeightRecord } from 'src/app/diary/models/weight-record';
 
 @Component({
@@ -11,6 +12,9 @@ export class WeightRecordsChartComponent implements OnChanges {
 
   @Input()
   records!: WeightRecord[];
+
+  @Input()
+  recordsWindow!: RecordsWindow;
 
   data: ChartData<'scatter'> = {
     datasets: [
@@ -31,7 +35,7 @@ export class WeightRecordsChartComponent implements OnChanges {
     plugins: {
       title: {
         display: true,
-        text: 'Ra!'
+        text: this.recordsWindow?.title
       },
       legend: {
         display: false
@@ -62,10 +66,20 @@ export class WeightRecordsChartComponent implements OnChanges {
   ngOnChanges(): void {
     this.data = {
       datasets: [{
-        ... this.data.datasets[0],
+        ...this.data.datasets[0],
         data: this.records.map(r => ({ x: r.recorded, y: r.amount } as any)),
       }]
     };
+    this.options = {
+      ...this.options,
+      plugins: {
+        ...this.options.plugins,
+        title: {
+          ...this.options.plugins?.title,
+          text: this.recordsWindow.title
+        }
+      }
+    }
   }
 
 }

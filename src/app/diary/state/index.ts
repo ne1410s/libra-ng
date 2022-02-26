@@ -19,3 +19,8 @@ export const getCalorieRecords = createSelector(
   getDiaryFeatureState,
   state => state.calorieRecords,
 );
+
+export const getRecordsWindow = createSelector(
+  getDiaryFeatureState,
+  state => state.recordsWindow,
+);

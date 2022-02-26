@@ -4,4 +4,6 @@
 
 <app-weight-records-grid [records]="weightRecords$ | async | fallback:[]"></app-weight-records-grid>
 
-<app-weight-records-chart [records]="weightRecords$ | async | fallback:[]"></app-weight-records-chart>
+<app-weight-records-chart
+  [records]="weightRecords$ | async | fallback:[]"
+  [recordsWindow]="recordsWindow$ | async | fallback:{}"></app-weight-records-chart>
